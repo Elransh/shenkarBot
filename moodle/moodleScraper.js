@@ -92,7 +92,7 @@ export const getEventsData = async (user) => {
     const browser = await puppeteer.launch({ args: [
         '--no-sandbox',
         '--disable-setuid-sandbox',
-    ] });
+    ], headless: true});
     const page = await login(user, browser);
     const upcomingEvents = await getUpcomingEvents(page);
     const upcomingEventsWithJobURL = await addJobURLToEvent(upcomingEvents, browser);
