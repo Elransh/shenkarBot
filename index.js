@@ -11,7 +11,7 @@ const app = express();
 app.use(express.json());
     
 const PORT = process.env.PORT || 3000;
-const URL = process.env.URL || 'https://shanker.herokuapp.com';
+const URL = process.env.URL || 'https://shankerbot.herokuapp.com';
 
 config();
 // Leave always on
