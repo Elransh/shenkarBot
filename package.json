@@ -1,0 +1,27 @@
+{
+  "name": "shenkarbot",
+  "version": "1.0.0",
+  "description": "bot that will send updates to telegram from shenkar moodle",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Elransh/shenkarBot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Elransh/shenkarBot/issues"
+  },
+  "homepage": "https://github.com/Elransh/shenkarBot#readme",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "dotenv": "^16.0.3",
+    "puppeteer": "^20.2.1",
+    "telegraf": "^4.12.2"
+  }
+}
