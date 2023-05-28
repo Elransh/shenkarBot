@@ -155,8 +155,8 @@
     "yauzl": "^2.10.0"
   },
   "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node node_modules/puppeteer/install.js && node index.js",
+    "heroku-postbuild": "mkdir ./.cache && mv /app/.cache/puppeteer ./.cache"
   },
   "repository": {
     "type": "git",
