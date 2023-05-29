@@ -1,12 +1,6 @@
 
 const SESSION_TOKEN_MEMORY = new Map();
 
-const SHENKAR_BASE_URL = "https://meydanet.shenkar.ac.il/";
-const HEBREW_QUERTERS = [
-    "א",
-    "ב"
-]
-
 const DIDNT_DO_THE_TEST = (grade) => grade === "טרם נקבע ציון" || grade === "לא לפרסום" ;
 
 const login = async (user, browser) => {
@@ -34,7 +28,6 @@ export const getSessionToken = async (user, browser) => {
         const parsed = JSON.parse(stringifiedToken);
         return parsed.token
     });
-    page.screenshot({ path: "example6.png" });
     // set the token in the memory for 30 minutes if possible 
     //setting up for 30 minutes memory
     SESSION_TOKEN_MEMORY.set(user.name, sessionToken);
