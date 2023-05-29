@@ -155,8 +155,7 @@
     "yauzl": "^2.10.0"
   },
   "scripts": {
-    "start": "node node_modules/puppeteer/install.js && node index.js",
-    "heroku-postbuild": "mkdir ./.cache && mv /app/.cache/puppeteer ./.cache"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
