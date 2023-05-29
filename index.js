@@ -5,21 +5,13 @@ import { getEventsData } from './moodle/moodleScraper.js';
 import { beutifyEventsMessageForTelegram, upcomingTestsMessage, redoCoursesMessage, bestTestsMessage } from './utils/textHandler.js';
 import { user } from './utils/user.js';
 import { main } from './meidanet/index.js';
-import express from 'express';
 
-const app = express();
-app.use(express.json());
-    
-const PORT = process.env.PORT || 3000;
-const URL = process.env.URL || 'https://shanker.herokuapp.com';
 
 config();
 // Leave always on
 
 
 const bot = Bot();
-bot.telegram.setWebhook(`${URL}/bot${process.env.TELEGRAM_BOT_TOKEN}`);
-app.use(bot.webhookCallback(`/bot${process.env.TELEGRAM_BOT_TOKEN}`));
 
 bot.start((ctx) => {
     const keyboard = Markup.inlineKeyboard([
@@ -109,15 +101,6 @@ bot.on("text", (ctx) => {
 
 
 bot.launch();
-
-app.get('/', (req, res) => {
-    res.send("Hello World");
-});
-if (process.env.NODE_ENV === 'production') {
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
-}
 
 console.log("Bot is running");
 // main();
