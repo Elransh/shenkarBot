@@ -19,7 +19,7 @@ const login = async (user, browser) => {
     await page.click("button[type='submit']");
     await page.waitForNavigation();
     // await for 2 seconds
-    await page.waitForTimeout(9000);
+    await page.waitForTimeout(3000);
     return page;
 };
 
@@ -34,7 +34,6 @@ export const getSessionToken = async (user, browser) => {
         const parsed = JSON.parse(stringifiedToken);
         return parsed.token
     });
-    page.screenshot({ path: "example6.png" });
     // set the token in the memory for 30 minutes if possible 
     //setting up for 30 minutes memory
     SESSION_TOKEN_MEMORY.set(user.name, sessionToken);

@@ -1,5 +1,6 @@
 import { Telegraf } from 'telegraf';
 import { config } from 'dotenv';
+
 config();
 
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;

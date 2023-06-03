@@ -29,7 +29,6 @@ export const getGrades = async (token) => {
         cumAvg: averages[0].cumulativeAverage,
     }
     const coursesAvg = collapsedCourses.clientData.filter(course => JSON.stringify(course.__body) !== "[]").map((course) => {
-        console.log(course)
         const { __body: body } = course;
         const bodyElements  = body[0].__body;
         let response =  {
@@ -51,7 +50,6 @@ export const getGrades = async (token) => {
             const moedTime = element.bhn_moed_time.split("-");
             const moedDate = element.bhn_moed_dtmoed;
             const isAfterToday = booleanDateIsAfterToday(moedDate);
-            console.log(`moedGrade: ${moedGrade} DIDNT_COME_TO_THE_TEST: ${DIDNT_COME_TO_THE_TEST(moedGrade)}`)
             const hasGrade = moedGrade !== "" || !!moedGrade;
             const isFinalGrade = Number(moedGrade) === response.finalGrade;
             if (hasGrade) response.hasAnyGrade = true;

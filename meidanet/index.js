@@ -8,7 +8,7 @@ const GRADES_MEMORY_TIMESTAMP = new Map();
 
 
 export const main = async (user) => {
-    const browser = await puppeteer.launch({args: [
+    const browser = await puppeteer.launch({headless: true},{args: [
         '--no-sandbox',
     ]});
     const { name } = user;
@@ -26,7 +26,6 @@ export const main = async (user) => {
     const lastGotGrade = getLastGotGrades(grades);
     GRADES_MEMORY.set(name, {best5, upcomingTests, UPCOMING_NAMES, NEED_TO_RETAKE, lastGotGrade, grades,
     });
-    console.log(JSON.stringify(upcomingTests));
     await Promise.all([
         browser.close(),
         GRADES_MEMORY_TIMESTAMP.set(name, Date.now()),

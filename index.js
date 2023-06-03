@@ -8,7 +8,6 @@ import { main } from './meidanet/index.js';
 
 
 config();
-// Leave always on
 
 
 const bot = Bot();
@@ -73,6 +72,7 @@ bot.on('callback_query', async (ctx) => {
                 await Promise.all([
                     console.log("NO AVG DATA YET"),
                     ctx.telegram.deleteMessage(lookingForMessage.chat.id, lookingForMessage.message_id),
+                    ctx.reply("אין עדיין מידע על ממוצע", { parse_mode: "Markdown" }),
                 ]);
                 break;
             default:
@@ -103,4 +103,3 @@ bot.on("text", (ctx) => {
 bot.launch();
 
 console.log("Bot is running");
-// main();
