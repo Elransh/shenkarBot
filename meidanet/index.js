@@ -8,8 +8,9 @@ const GRADES_MEMORY_TIMESTAMP = new Map();
 
 
 export const main = async (user) => {
-    const browser = await puppeteer.launch({headless: true},{args: [
+    const browser = await puppeteer.launch({headless: true, args: [
         '--no-sandbox',
+        '--disable-setuid-sandbox'
     ]});
     const { name } = user;
     if (GRADES_MEMORY_TIMESTAMP.has(name) && GRADES_MEMORY_TIMESTAMP.get(name) > Date.now() - 1000 * 60 * 60 * 24) {

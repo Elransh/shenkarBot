@@ -89,8 +89,9 @@ const addJobStateToEvent = async (events,browser) => {
 
 
 export const getEventsData = async (user) => {
-    const browser = await puppeteer.launch({headless: true},{ args: [
-        '--no-sandbox'
+    const browser = await puppeteer.launch({headless: true, args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox'
     ]});
     const page = await login(user, browser);
     const upcomingEvents = await getUpcomingEvents(page);
