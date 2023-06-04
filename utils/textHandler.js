@@ -27,7 +27,28 @@ export const upcomingTestsMessage = (tests) => {
         if (test._isBeforeMoedB) {
             startTime = moadim[1].startTime;
             endTime = moadim[1].endTime;
-        }
+        };
+        const [day, month, year] = nextMoedDate.split("/");
+        const dateTimeInLocal = new Date(`${year}-${month}-${day}T${startTime}`);
+        let remainingTime = Date.parse(dateTimeInLocal) - Date.now() / (1000 * 60 * 60 * 24); // in days
+        let format;
+        if (remainingTime < 1) {
+            remainingTime = Date.parse(dateTimeInLocal) - Date.now() / (1000 * 60 * 60); // in hours
+            format = "שעות";
+        };
+        if (remainingTime < 1) {
+            remainingTime = Date.parse(dateTimeInLocal) - Date.now() / (1000 * 60); // in minutes
+            format = "דקות";
+        };
+        if (remainingTime < 1) {
+            remainingTime = Date.parse(dateTimeInLocal) - Date.now() / (1000); // in seconds
+            format = "שניות";
+        };
+        if (remainingTime > 1) {
+            remainingTime = Math.floor(remainingTime);
+            format = "ימים";
+        };
+        message += `זמן נותר עד למועד הבא: ${remainingTime} ${format}\n`;
         message += `*קורס*: ${name}\n`;
         message += `*תאריך*: ${nextMoedDate}\n`;
         message += `*מועד*: ${moed}\n`;

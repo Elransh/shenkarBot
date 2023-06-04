@@ -25,7 +25,7 @@ const getUpcomingEvents = async (page) => {
     };
     console.log("finished login");
 
-    await page.waitForSelector('.card-text.content');
+    // await page.waitForSelector('.card-text.content');
 
     const upcomingEvents = await page.evaluate(() => {
         const upcomingEvents = [];
