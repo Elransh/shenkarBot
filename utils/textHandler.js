@@ -3,6 +3,7 @@
 const jobStateEmoji = (jobState) => { if (jobState === "לא הוגש שום דבר עבור מטלה זו." || jobState === "אין נסיונות") return "❌"; if (jobState === "נבדק" || jobState === "הוגש למתן ציון") return "✅"; return "❓"}
 
 export const beutifyEventsMessageForTelegram = (events) => {
+    if (events?.status === "error") return `שגיאה במהלך קריאת המידע ${events?.error}`
     let message = "";
     message += `*  עבודות הגשה קרובות*\n\n`;
     events.forEach(event => {
@@ -17,6 +18,7 @@ export const beutifyEventsMessageForTelegram = (events) => {
 };
 
 export const upcomingTestsMessage = (tests) => {
+    if (tests.status === "error") return `שגיאה במהלך קריאת המידע ${tests.error}`
     let message = "";
     message += `* ⏰ מבחנים קרובים*\n\n`;
     tests.forEach(test => {
@@ -37,6 +39,7 @@ export const upcomingTestsMessage = (tests) => {
 
 export const redoCoursesMessage = (tests) => {
     // courses that needs to be redo based on the tests
+    if (tests.status === "error") return `שגיאה במהלך קריאת המידע ${tests.error}`
     let message = "";
     message += `* 😥 קורסים שצריך לקחת מחדש*\n\n`;
     tests.forEach(test => {
@@ -47,6 +50,7 @@ export const redoCoursesMessage = (tests) => {
 };
 
 export const bestTestsMessage = (tests) => {
+    if (tests.status === "error") return `שגיאה במהלך קריאת המידע ${tests.error}`
     let message = "";
     message += `* 💯  !מבחנים הטובים ביותר*\n\n`;
     tests.forEach(test => {

@@ -8,6 +8,7 @@ const GRADES_MEMORY_TIMESTAMP = new Map();
 
 
 export const main = async (user) => {
+    try {
     const browser = await puppeteer.launch({headless: true, args: [
         '--no-sandbox',
         '--disable-setuid-sandbox'
@@ -32,6 +33,7 @@ export const main = async (user) => {
         GRADES_MEMORY_TIMESTAMP.set(name, Date.now()),
     ]);
     return {
+        status: "ok",
         best5,
         upcomingTests,
         UPCOMING_NAMES,
@@ -39,4 +41,11 @@ export const main = async (user) => {
         lastGotGrade,
         grades,
     }
+    } catch (error) {
+        console.log("ERROR IN GET MOODLE + " + error);
+        return {
+            status: "error",
+            error,
+        };
+        }
 };

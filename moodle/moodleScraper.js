@@ -89,6 +89,7 @@ const addJobStateToEvent = async (events,browser) => {
 
 
 export const getEventsData = async (user) => {
+    try {
     const browser = await puppeteer.launch({headless: true, args: [
         '--no-sandbox',
         '--disable-setuid-sandbox'
@@ -100,6 +101,13 @@ export const getEventsData = async (user) => {
     console.log(upcomingEventsWithJobState);
     await browser.close();
     return upcomingEventsWithJobState;
+    } catch (error) {
+        console.log("ERROR IN GET MOODLE + " + error);
+        return {
+            status: "error",
+            error,
+        };
+    }
 };
 
 

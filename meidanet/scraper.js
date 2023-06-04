@@ -1,5 +1,6 @@
 
 const SESSION_TOKEN_MEMORY = new Map();
+const SESSION_TOKEN_MEMORY_TIMESTAMP = new Map();
 
 const SHENKAR_BASE_URL = "https://meydanet.shenkar.ac.il/";
 const HEBREW_QUERTERS = [
@@ -25,7 +26,7 @@ const login = async (user, browser) => {
 
 export const getSessionToken = async (user, browser) => {
     console.log("Getting session token...")
-    if (SESSION_TOKEN_MEMORY.has(user.name)) {
+    if (SESSION_TOKEN_MEMORY.has(user.name) && SESSION_TOKEN_MEMORY_TIMESTAMP.get(user.name) > Date.now() - 1000 * 60 * 30) {
         return SESSION_TOKEN_MEMORY.get(user.name);
     }
     const page = await login(user, browser);
@@ -37,6 +38,7 @@ export const getSessionToken = async (user, browser) => {
     // set the token in the memory for 30 minutes if possible 
     //setting up for 30 minutes memory
     SESSION_TOKEN_MEMORY.set(user.name, sessionToken);
+    SESSION_TOKEN_MEMORY_TIMESTAMP.set(user.name, Date.now());
     return sessionToken;
 }
 
