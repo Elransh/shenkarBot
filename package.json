@@ -2,6 +2,7 @@
   "name": "shenkarbot",
   "version": "1.0.0",
   "description": "bot that will send updates to telegram from shenkar moodle",
+  "type": "module",
   "main": "index.js",
   "dependencies": {
     "accepts": "^1.3.8",
