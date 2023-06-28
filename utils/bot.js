@@ -1,12 +1,12 @@
-import { Telegraf } from 'telegraf';
-import { config } from 'dotenv';
+// import { Telegraf } from 'telegraf';
+// import { config } from 'dotenv';
 
-config();
+// config();
 
-const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+// const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 
-export const Bot = () => {
-    const bot = new Telegraf(TELEGRAM_BOT_TOKEN);
-    return bot;
-};
+// export const Bot = () => {
+//     const bot = new Telegraf(TELEGRAM_BOT_TOKEN);
+//     return bot;
+// };
 

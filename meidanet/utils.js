@@ -23,7 +23,7 @@ export const getUpcomingTests = (futureTests) => {
         const aDateToCheck = new Date(aYear, aMonth - 1, aDay);
         const bDateToCheck = new Date(bYear, bMonth - 1, bDay);
         return aDateToCheck > bDateToCheck ? 1 : -1;
-    }).slice(0, 5)
+    }).slice(0, 8)
     return response;
 }
 export const getBest5 = (grades) =>{
