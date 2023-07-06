@@ -31,11 +31,11 @@ export const getToken = async (user) => {
         "x-requested-with": "XMLHttpRequest"
     }
     const { data } = await axios.post(MEIDANET_LOGIN_URL, text, { headers });
-    return data.access_token;
+    return data;
 };
 
 
-const MEIDANET = (token) => {
+export const MEIDANET = (token) => {
     const instance =  axios.create({
     baseURL: SHENKAR_BASE_URL,
     headers: {
